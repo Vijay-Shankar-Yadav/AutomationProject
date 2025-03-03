@@ -1,0 +1,45 @@
+pipeline {
+    agent any  // Runs on any available agent
+
+    environment {
+        APP_ENV = "production"  // Example of environment variable
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Vijay-Shankar-Yadav/AutomationProject.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'  // Executes shell command
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'  // Runs tests
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main'  // Deploys only on 'main' branch
+            }
+            steps {
+                sh './deploy.sh'  // Example deployment script
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and Deployment Successful!'
+        }
+        failure {
+            echo 'Build Failed!'
+        }
+    }
+}
