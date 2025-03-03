@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuiteName">
+    <test name="AllTests">
+        <classes>
+            <class name="com.atoa.qa.testcases.VerifyFooterLink" />
+            <class name="com.atoa.qa.testcases.TipPageTest" />
+            <class name="com.atoa.qa.testcases.QRCodePageTest" />
+            <class name="com.atoa.qa.testcases.PaymentIdPageTest" />
+            <class name="com.atoa.qa.testcases.BankPageTest" />
+        </classes>
+    </test>
+</suite>
